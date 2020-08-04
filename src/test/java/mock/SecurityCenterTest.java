@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.*;
 
@@ -16,13 +17,14 @@ public class SecurityCenterTest {
     编写SecurityCenter类的单元测试，单元测试switchOn方法，不依赖于DoorPanel的close的方法实现
     * */
 
+    @Mock
     private DoorPanel doorPanel;
+    @InjectMocks
     private SecurityCenter securityCenter;
 
     @BeforeEach
     public void setUp() {
-        doorPanel = mock(DoorPanel.class);
-        securityCenter = new SecurityCenter(doorPanel);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
